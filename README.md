@@ -1,218 +1,309 @@
-🎨 AI Virtual Painter
-A touchless drawing application that uses hand gestures to create digital artwork through a webcam.
+# 🎨 AI Finger Painting
 
-📌 Project Overview
-AI Virtual Painter is a computer vision project developed using Python. It allows users to draw on a virtual canvas without using a mouse, keyboard, or touchscreen.
+> An interactive painting application that allows users to create digital artwork using their fingers through a real-time webcam.
 
-The application uses a webcam to capture live video and MediaPipe to detect hand movements. The index finger works as a virtual brush, while raising two fingers activates the eraser.
+## 📌 Project Overview
 
-OpenCV processes the camera frames and displays the drawing on the live video. This project shows how artificial intelligence and computer vision can be used to create a simple and interactive application.
+AI Finger Painting is a computer vision project that allows users to draw on a virtual canvas without using a mouse, keyboard, or touchscreen.
 
-✨ Features
-🖐️ Real-time hand tracking
-✍️ Drawing using the index finger
-🧽 Erasing using two fingers
-🎥 Live webcam-based interaction
-🖼️ Virtual canvas drawing
-🔄 Smooth line drawing
-🧠 Hand landmark detection using MediaPipe
-🧹 Clear the canvas using the C key
-❌ Exit the application using the Q key
-🧰 Technologies Used
-Technology	Purpose
-Python	Main programming language
-OpenCV	Webcam access and image processing
-MediaPipe	Hand tracking and finger detection
-NumPy	Creating and managing the virtual canvas
-📂 Project Structure
-AI-Virtual-Painter/
+The application uses a real-time camera to capture the user's hand movements and detect finger positions. The finger acts as a virtual brush, allowing users to draw directly on the screen.
+
+OpenCV is used for webcam access and image processing, while hand-tracking technology detects the position and movement of the fingers. The project demonstrates how artificial intelligence and computer vision can be combined to create an interactive and touchless digital painting experience.
+
+## ✨ Features
+
+* 🖐️ Real-time finger tracking
+* 🎨 Drawing using finger movements
+* 📷 Live webcam-based interaction
+* 🖌️ Virtual canvas painting
+* ✍️ Smooth digital brush strokes
+* 🧠 Hand landmark detection
+* 🧹 Canvas clearing functionality
+* 🎨 Interactive and touchless painting
+* ⚡ Real-time camera processing
+
+## 🧰 Technologies Used
+
+| Technology | Purpose                             |
+| ---------- | ----------------------------------- |
+| Python     | Main programming language           |
+| OpenCV     | Webcam access and image processing  |
+| MediaPipe  | Hand and finger tracking            |
+| NumPy      | Virtual canvas and image operations |
+
+## 📂 Project Structure
+
+```text
+AI-Finger-Painting/
 │
-├── ai_virtual_painter.py
-└── README.md
-⚙️ Installation
-Step 1: Install Python
-Python 3.11 is recommended for this project because it works well with the MediaPipe version used in the program.
+├── ai_finger_painting.py
+├── README.md
+└── requirements.txt
+```
 
-Check the installed Python version:
+## ⚙️ Installation
 
+### Step 1: Install Python
+
+Install Python on your computer.
+
+Check your Python version:
+
+```bash
 python --version
-To check Python 3.11 specifically, use:
+```
 
-py -3.11 --version
-Step 2: Install Required Libraries
+Python 3.10 or 3.11 is recommended for compatibility with the required libraries.
+
+### Step 2: Install Required Libraries
+
 Open Command Prompt or the VS Code terminal and run:
 
-py -3.11 -m pip install opencv-python mediapipe==0.10.14 numpy
-▶️ How to Run the Project
-Open the project folder in Command Prompt or VS Code.
+```bash
+pip install opencv-python mediapipe numpy
+```
 
-Run the Python file using:
+If a `requirements.txt` file is available, you can install all dependencies using:
 
-py -3.11 ai_virtual_painter.py
-After running the program, the webcam window will open automatically.
+```bash
+pip install -r requirements.txt
+```
 
-🎮 Controls
-Action	Control
-Draw	Raise only the index finger
-Erase	Raise the index and middle fingers
-Clear the canvas	Press C
-Exit the program	Press Q
-🖐️ How the Project Works
+## ▶️ How to Run the Project
+
+Open the project folder in VS Code or Command Prompt.
+
+Run the Python file:
+
+```bash
+python ai_finger_painting.py
+```
+
+After running the program, the webcam will open automatically.
+
+Make sure your hand is visible in front of the camera. Move your finger to interact with the virtual canvas and create your painting.
+
+## 🎮 Controls
+
+| Action          | Control                                             |
+| --------------- | --------------------------------------------------- |
+| Draw            | Move your finger on the screen                      |
+| Select/Interact | Use the detected finger position                    |
+| Clear Canvas    | Use the clear option/key implemented in the program |
+| Exit            | Use the exit option/key implemented in the program  |
+
+> The exact controls may vary depending on the implementation of the Python program.
+
+## 🖐️ How the Project Works
+
 The project works through the following steps:
 
-The webcam captures live video.
-OpenCV reads and processes each video frame.
-MediaPipe detects the user's hand.
-The program identifies important hand landmark points.
-The index finger position is used as the brush position.
-OpenCV draws a line between the previous and current finger positions.
-The drawing is stored on a virtual canvas.
-The virtual canvas is displayed over the live camera feed.
-Raising two fingers activates the eraser.
-Pressing C clears the complete canvas.
-Pressing Q closes the program.
-📍 Finger Landmarks Used
-MediaPipe assigns numbers to different points on the hand. This project uses the following landmarks:
+1. The webcam captures live video.
+2. OpenCV reads the camera frames.
+3. The video frame is processed in real time.
+4. MediaPipe detects the user's hand.
+5. Hand landmarks are identified.
+6. The position of the finger is determined.
+7. The finger position is treated as the virtual brush position.
+8. The program tracks the movement of the finger.
+9. OpenCV draws strokes according to the finger movement.
+10. The strokes are stored on a virtual canvas.
+11. The canvas is displayed together with the live camera feed.
+12. The user can continue moving their finger to create digital artwork.
 
-Finger Point	Landmark ID
-Index finger tip	8
-Index finger joint	6
-Middle finger tip	12
-Middle finger joint	10
-The program compares these points to identify whether the fingers are raised or lowered.
+## ☝️ Finger Tracking
 
-Drawing Condition
-Drawing starts when the index finger is raised and the middle finger is lowered.
+MediaPipe detects important landmark points on the hand.
 
-Erasing Condition
-Erasing starts when both the index finger and middle finger are raised.
+The application can use the detected finger-tip position as the brush location.
 
-📸 Example Output
-When the program starts, the webcam opens and displays the live camera feed.
+For example:
 
-The user can raise the index finger to draw on the screen. The drawing appears as a coloured line and follows the movement of the finger.
+| Finger Point        | Landmark ID |
+| ------------------- | ----------: |
+| Index Finger Tip    |           8 |
+| Index Finger Joint  |           6 |
+| Middle Finger Tip   |          12 |
+| Middle Finger Joint |          10 |
 
-When the index and middle fingers are raised together, the eraser removes the drawing from the selected area. The C key clears the complete canvas, and the Q key closes the application.
+The program uses these landmarks to understand finger positions and movements.
 
-The final output is a live webcam window with a virtual drawing canvas displayed over the camera feed.
+### Drawing
 
-⚠️ Requirements
-The project requires a computer with Python 3.11, a working webcam, and the necessary Python libraries.
+When the required finger gesture is detected, the application starts drawing.
 
-A well-lit environment helps MediaPipe detect the hand more accurately. The hand should remain visible inside the webcam frame. A clear background can also improve the tracking performance.
+The current finger position is connected with the previous position to create a continuous digital stroke.
 
-The required libraries are:
+### Erasing
 
-OpenCV
-MediaPipe
-NumPy
-🛠️ Possible Improvements
-The current version provides drawing and erasing through hand gestures. The project can be improved further by adding more interactive features.
+If an erasing gesture is implemented, the application can use a different finger gesture to remove existing strokes from the canvas.
 
-Possible future improvements include:
+## 📸 Example Output
 
-🎨 Selecting different colours using hand gestures
-🖌️ Changing the brush size
-🧽 Improving the eraser tool
-🖼️ Saving drawings as image files
-↩️ Adding undo and redo options
-🧠 Recognising basic shapes
-🖥️ Supporting virtual mouse functionality
-📱 Supporting multiple hands
-🗂️ Adding a drawing tools menu
-🌈 Adding different brush colours
-These improvements can make the application more flexible and useful for digital drawing and educational activities.
+When the program starts, the webcam displays a live camera feed.
 
-🐞 Troubleshooting
-Webcam Not Opening
-The webcam may not open if another application is already using it or if camera permission is disabled.
+The user can place their hand in front of the camera and move their finger across the screen. The detected finger acts as a virtual brush, and the movement creates digital strokes on the virtual canvas.
 
-Check the webcam connection and close other applications that may be using the camera. Make sure camera access is enabled in Windows settings.
+The final output is an interactive webcam window containing the live camera feed and the user's digital painting.
 
-If required, the webcam command can be changed to:
+## ⚠️ Requirements
 
-cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-MediaPipe Installation Error
-MediaPipe must be installed using a compatible Python version. This project uses Python 3.11.
+The project requires:
 
-Install MediaPipe using:
+* A computer or laptop
+* Python installed
+* A working webcam
+* OpenCV
+* MediaPipe
+* NumPy
+* Proper lighting
 
-py -3.11 -m pip install mediapipe==0.10.14
-Make sure the program is being run with Python 3.11.
+Good lighting helps the hand-tracking system detect the user's fingers more accurately.
 
-OpenCV or NumPy Error
-If OpenCV or NumPy is missing, install them using:
+The hand should remain clearly visible inside the webcam frame.
 
-py -3.11 -m pip install opencv-python numpy
-Black Screen Issue
-A black screen may appear because of camera permissions, an incorrect camera number, or another application using the webcam.
+## 🛠️ Possible Improvements
 
-Check the following:
+The current project can be extended with additional painting and computer vision features.
 
-The webcam is connected properly.
-Camera permission is enabled.
-Other camera applications are closed.
-The correct camera number is being used.
-The program is restarted after making changes.
-Drawing Is Not Accurate
-Hand tracking may become less accurate when the hand is not clearly visible.
+Possible improvements include:
+
+* 🌈 Multiple brush colours
+* 🖌️ Adjustable brush size
+* 🧽 Improved eraser
+* 💾 Save paintings as image files
+* ↩️ Undo and redo functionality
+* 🎨 Colour selection using hand gestures
+* 🔷 Automatic shape recognition
+* 🖼️ Background image support
+* 🖐️ Multiple-hand tracking
+* 🧑‍🎨 Different brush styles
+* ✨ Special drawing effects
+* 🗂️ Drawing tools menu
+* 📱 Improved user interface
+
+## 🐞 Troubleshooting
+
+### Webcam Not Opening
+
+The webcam may not open if another application is currently using the camera or if camera permissions are disabled.
+
+Try the following:
+
+* Check that the webcam is connected.
+* Close other applications using the camera.
+* Enable camera permissions.
+* Restart the program.
+
+If necessary, try changing the camera index:
+
+```python
+cap = cv2.VideoCapture(0)
+```
+
+If you have multiple cameras, you may need to try another camera index.
+
+### MediaPipe Installation Error
+
+Make sure you are using a compatible Python version and that MediaPipe is installed correctly.
+
+Try:
+
+```bash
+pip install mediapipe
+```
+
+### OpenCV or NumPy Error
+
+Install the required libraries again:
+
+```bash
+pip install opencv-python numpy
+```
+
+### Black Screen
+
+A black screen can occur because of camera permissions, an incorrect camera index, or another application using the webcam.
+
+Check that:
+
+* The webcam is working.
+* Camera permission is enabled.
+* Other camera applications are closed.
+* The correct camera index is being used.
+
+### Finger Tracking Is Not Accurate
+
+Finger detection can become less accurate when the hand is difficult to see.
 
 For better results:
 
-Use sufficient lighting.
-Keep the hand inside the camera frame.
-Avoid very fast movements.
-Keep the fingers visible.
-Use a simple background.
-Maintain a suitable distance from the webcam.
-📚 Learning Outcomes
-Developing this project helped me understand the practical use of computer vision and artificial intelligence.
+* Use sufficient lighting.
+* Keep your hand inside the camera frame.
+* Keep your fingers clearly visible.
+* Avoid very fast movements.
+* Use a simple background.
+* Maintain a suitable distance from the webcam.
 
-The main concepts learned from this project are:
+## 📚 Learning Outcomes
 
-Accessing a webcam using OpenCV
-Processing live video frames
-Detecting hands using MediaPipe
-Tracking finger landmark positions
-Recognising simple hand gestures
-Drawing on a virtual canvas
-Using NumPy for image handling
-Combining multiple Python libraries
-Creating a real-time interactive application
-Solving installation and compatibility issues
-This project helped me understand how hand gestures can be used as an alternative method of computer interaction.
+Developing this project provides practical experience with computer vision, artificial intelligence, and real-time video processing.
 
-🎯 Use Cases
-The AI Virtual Painter can be used in different situations, such as:
+The main concepts include:
 
-🖼️ Digital drawing
-🧑‍🏫 Virtual classroom whiteboards
-📚 Educational demonstrations
-🖥️ Touchless computer interaction
-🎨 Gesture-based painting
-🤖 Artificial intelligence demonstrations
-👨‍💻 Computer vision learning
-🧪 Real-time hand tracking experiments
-🔍 Core Concepts Used
-Computer Vision
-Hand Gesture Recognition
-Image Processing
-Real-Time Video Processing
-Hand Landmark Detection
-Virtual Canvas Creation
-Human-Computer Interaction
-Bitwise Image Operations
-👨‍💻 Author
-Name: Your Name
-Course: Computer Science / Artificial Intelligence
-Project: AI Virtual Painter
-Programming Language: Python
-Technologies Used: OpenCV, MediaPipe, NumPy
-Project Type: Computer Vision and Artificial Intelligence
+* Accessing a webcam using OpenCV
+* Processing real-time video frames
+* Detecting hands using MediaPipe
+* Tracking finger landmark positions
+* Recognising hand movements
+* Creating a virtual drawing canvas
+* Drawing using finger coordinates
+* Using NumPy for image processing
+* Combining multiple Python libraries
+* Building a real-time interactive application
 
-This project was developed as part of my learning experience in Python, artificial intelligence, and computer vision.
+This project demonstrates how computer vision can be used to create a touchless human-computer interaction system.
 
-📜 License
-This project was created for educational purposes.
+## 🎯 Use Cases
 
-You are free to study, modify, and improve the code.
+AI Finger Painting can be used for:
+
+* 🎨 Digital drawing
+* 🧑‍🏫 Interactive classroom demonstrations
+* 📚 Educational projects
+* 🖥️ Touchless computer interaction
+* 🖌️ Gesture-based painting
+* 🤖 Artificial intelligence demonstrations
+* 👨‍💻 Computer vision learning
+* 🧪 Real-time hand-tracking experiments
+* 🎭 Interactive art applications
+
+## 🔍 Core Concepts Used
+
+* Computer Vision
+* Artificial Intelligence
+* Hand Gesture Recognition
+* Finger Tracking
+* Image Processing
+* Real-Time Video Processing
+* Hand Landmark Detection
+* Virtual Canvas Creation
+* Human-Computer Interaction
+* Coordinate Tracking
+
+## 👨‍💻 Author
+
+**Name:** Your Name
+**Course:** Computer Science / Artificial Intelligence
+**Project:** AI Finger Painting
+**Programming Language:** Python
+**Technologies Used:** OpenCV, MediaPipe, NumPy
+**Project Type:** Computer Vision and Artificial Intelligence
+
+This project was developed as part of a learning experience in Python, artificial intelligence, and computer vision.
+
+## 📜 License
+
+This project is created for educational purposes.
+
+You are free to study, modify, and improve the project for learning and experimentation.
